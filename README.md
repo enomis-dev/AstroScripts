@@ -7,4 +7,6 @@ Usage:
 
 python .\star_trails.py --images_folder_path path/to/folder
 
-![Star trails](images/example.PNG)
+![Star trails 1](images/example.PNG)
+
+![Star trails 2](images/example1.PNG)

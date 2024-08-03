@@ -1,5 +1,6 @@
 import cv2
 import os
+import argparse
 
 def create_video_from_images(folder_path, output_path, fps):
     # Get all files in the folder
@@ -31,9 +32,21 @@ def create_video_from_images(folder_path, output_path, fps):
     video.release()
     print(f"Video saved at {output_path}")
 
-# Define folder path, output video path, and frames per second
-folder_path = 'Photos'
-output_path = 'video.mp4'
-fps = 4
+def main():
+    # Set up command-line argument parsing
+    parser = argparse.ArgumentParser(description="Create a video from a folder of images.")
+    parser.add_argument('--images_folder_path', type=str, help='Path to the folder containing images')
+    parser.add_argument('--output_video_path', type=str, default='output_video.mp4',
+                        help='Path to save the output video (default: output_video.mp4)')
+    parser.add_argument('--fps', type=int, default=30, help='Frames per second for the video (default: 30)')
 
-create_video_from_images(folder_path, output_path, fps)
+    args = parser.parse_args()
+
+    # Call the function with command-line arguments
+    create_video_from_images(args.images_folder_path, args.output_video_path, args.fps)
+
+if __name__ == "__main__":
+    main()
+
+# Example usage:
+# python .\star_video_generator.py --images_folder_path Photos
